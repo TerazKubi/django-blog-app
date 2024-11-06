@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %} BlogApp - POST {% endblock %}
+
+{% block content %}
+
+    {% if post %}
+    <div class="post-details-title-container">
+        <div style="font-size: 40px; font-weight: bold;">{{ post.title }}</div>
+        
+    </div>
+    <div class="post-details-container">
+        <div>
+            <span>Published on {{ post.created_at|date:"F d, Y" }} by {{post.author}}</span>
+        </div>
+        {% if user.is_authenticated and user == post.author %}
+            <div>
+                <a href="{% url 'edit_post' post_id=post.id %}" class="button">Edit Post</a>
+                <a href="{% url 'delete_post' post_id=post.id %}" class="button" onclick="return confirm('Are you sure you want to delete this post?')">Delete Post</a>
+            </div>           
+        {% endif %}
+        
+        
+
+        <div class="post-details-content">
+            {{ post.content }}
+        </div>
+
+        
+
+        <h3>Comments</h3>
+        {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+        
+            <div class="form-group">
+                
+                <textarea name="{{ form.content.name }}" id="{{ form.content.id_for_id }}" rows="3" cols="40" placeholder="Say what you think"></textarea>
+                {% if form.content.errors %}
+                    <div class="error">{{ form.content.errors }}</div>
+                {% endif %}
+
+                <button type="submit">Comment</button>
+            </div>
+        
+            
+        
+        </form>
+        {% endif %}
+
+        <div class="comments-container">
+            {% for comment in comments %}
+                <div class="comment">
+                    <div class="comment-info">
+                        <div>{{ comment.author.username }}</div>
+                        <div><em>{{ comment.created_at|date:"F d, Y H:i" }}</em></div>
+                        
+                        {% if user.is_authenticated and user == comment.author %}
+                        <div>
+                            <a href="{% url 'delete_comment' post_id=post.id comment_id=comment.id %}" class="button" onclick="return confirm('Are you sure you want to delete this comment?')">Delete</a>
+                        </div>
+                        {% endif %}
+                        
+                    </div>
+                    <div class="comment-content">
+                        {{ comment.content }}
+                    </div>
+                    
+                </div>
+                
+
+            {% endfor %}
+        </div>
+
+        
+        
+
+        {% else %}
+        <p>No post found.</p>
+        {% endif %}
+    </div>
+    
+
+{% endblock %}
+
+
+
+
+
+

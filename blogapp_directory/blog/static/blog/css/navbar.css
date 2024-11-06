@@ -1,0 +1,109 @@
+body {
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+}
+
+.nav_bar_container{
+    width: 95%;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    margin-right: auto;
+    margin-left: auto;
+}
+.divider{
+    width: 33.33%;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+}
+.divider:nth-child(1){
+    font-size: 30px;
+}
+.divider:nth-child(1) a{
+    text-decoration: none;
+    color: black;
+
+}
+.divider:nth-child(1) a:visited{
+    color: black;
+}
+.divider:nth-child(1) a:hover{
+    text-decoration: underline;
+}
+.divider:nth-child(2){
+    justify-content: center;
+}
+.divider:nth-child(2) a{
+    padding: 5px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    color: blue;
+    font-weight: bold;
+}
+.divider:nth-child(2) a:visited{
+    color: blue;
+}
+.divider:nth-child(2) a:hover{
+    cursor: pointer;
+    border: 1px solid blue;
+}
+
+.divider:nth-child(3){
+    justify-content: flex-end;
+    
+}
+.divider:nth-child(3) div{
+    margin-right: 20px;
+}
+.divider:nth-child(3) a{
+    padding: 5px 20px;
+    border: 1px solid white;
+    border-radius: 5px;
+    text-decoration: none;
+    color: blue;
+}
+.divider:nth-child(3) a:visited{
+    color: blue;
+}
+.divider:nth-child(3) a:hover{
+    border: 1px solid blue;
+}
+
+.front-image-container{
+    width: 95%;
+    height: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(124, 176, 255);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-button a{
+    text-decoration: none;
+    color: blue;
+}
+.logout-button a:visited{
+    color: blue;
+}
+.logout-button{
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid white
+}
+.logout-button:hover{
+    border: 1px solid silver;
+    cursor: pointer;
+}
+
